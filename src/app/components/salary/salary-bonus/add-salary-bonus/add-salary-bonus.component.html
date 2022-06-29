@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="column column-12">
+    <form class="addSalaryBonusForm" [formGroup]="addSalaryBonusForm" (ngSubmit)="addSalaryBonus()">
+      <mat-form-field appearance="fill">
+        <mat-label>Employee</mat-label>
+        <mat-select (selectionChange)="onChangeEmployee($event)" formControlName="employee" required>
+          <mat-option *ngFor="let employee of employees" value="{{ employee.id }}">
+            {{ employee.firstName }} {{ employee.lastName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Bonus</mat-label>
+        <mat-select (selectionChange)="onChangeBonusSetNetBonus()" formControlName="bonusType" required>
+          <mat-option *ngFor="let bonus of bonusTypes" [value]="bonus">{{ bonus }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div style="width: 15%; height: 30px">
+        <div
+          class="salary-message"
+          *ngIf="
+            selectedEmployee !== undefined &&
+            (selectedEmployee.salary === null || selectedEmployee.salary.salary === null)
+          "
+        >
+          This employee doesn't have salary set.
+        </div>
+        <div
+          class="salary-message"
+          *ngIf="
+            selectedEmployee !== undefined &&
+            selectedEmployee.salary !== null &&
+            selectedEmployee.salary.salary !== null
+          "
+        >
+          Salary: {{ selectedEmployee.salary.salary }}
+        </div>
+      </div>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Net Bonus</mat-label>
+        <input matInput formControlName="netBonus" readonly />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Amt in $</mat-label>
+        <input matInput formControlName="amtInDollar" readonly />
+      </mat-form-field>
+      <div class="action-buttons">
+        <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+        <button class="add-button" mat-raised-button type="submit" [disabled]="!addSalaryBonusForm.valid">Add</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<app-breadcumb-toolbar breadcumbPath="Salary/Salary Details"></app-breadcumb-toolbar>
+<div *ngIf="salary" class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <button mat-raised-button color="primary" [routerLink]="['/salaries/edit/', salaryId]">Edit Salary</button>
+      <button mat-raised-button color="primary" (click)="approveSalaryRaise()">Approve Salary Raise</button>
+    </div>
+  </div>
+  <div class="column column-6">
+    <ul *ngIf="salary.employee" class="detailsList">
+      <li><h4>Employee</h4></li>
+      <li>
+        <em>First Name: </em>
+        {{ salary.employee.firstName !== null ? salary.employee.firstName : '---' }}
+      </li>
+      <li>
+        <em>Last Name: </em>
+        {{ salary.employee.lastName !== null ? salary.employee.lastName : '---' }}
+      </li>
+      <li>
+        <em>Job Role: </em>
+        {{ salary.employee.title !== null ? salary.employee.title : '---' }}
+      </li>
+      <li>
+        <em>Joined Date: </em>
+        {{ salary.employee.joinedDate !== null ? salary.employee.joinedDate : '---' }}
+      </li>
+      <li>
+        <em>Years in CA: </em>
+        {{ salary.employee.yearsInCA !== null ? salary.employee.yearsInCA : '---' }}
+      </li>
+    </ul>
+    <ul class="detailsList">
+      <li><h4>Comments</h4></li>
+      <li>{{ salary.comments !== null ? salary.comments : '---' }}</li>
+    </ul>
+  </div>
+  <div class="column column-6">
+    <ul class="detailsList">
+      <li><h4>Salary</h4></li>
+      <li>
+        <em>Contract Expiry: </em>
+        {{ salary.contractExpiry !== null ? salary.contractExpiry : '---' }}
+      </li>
+      <li>
+        <em>Last Contract Length: </em>
+        {{ salary.lastContractLength !== null ? salary.lastContractLength : '---' }}
+      </li>
+      <li>
+        <em>Suggested New Contract Length: </em>
+        {{ salary.suggestedNewContractLength !== null ? salary.suggestedNewContractLength : '---' }}
+      </li>
+      <li>
+        <em>Salary Bump History: </em>
+        {{ salary.salaryBumpHistory !== null ? salary.salaryBumpHistory : '---' }}
+      </li>
+      <li>
+        <em>Last Raise Date: </em>
+        {{ salary.lastRaiseDate !== null ? salary.lastRaiseDate : '---' }}
+      </li>
+      <li>
+        <em>Last Raise: </em>
+        {{ salary.lastRaise !== null ? salary.lastRaise : '---' }}
+      </li>
+      <li>
+        <em>Salary: </em>
+        {{ salary.salary !== null ? salary.salary : '---' }}
+      </li>
+      <li>
+        <em>Suggested Raise: </em>
+        {{ salary.suggestedRaise !== null ? salary.suggestedRaise : '---' }}
+      </li>
+      <li>
+        <em>Final: </em>
+        {{ salary.final !== null ? salary.final : '---' }}
+      </li>
+      <li>
+        <em>Amount In $: </em>
+        {{ salary.amtInDollar !== null ? salary.amtInDollar : '---' }}
+      </li>
+    </ul>
+  </div>
+</div>

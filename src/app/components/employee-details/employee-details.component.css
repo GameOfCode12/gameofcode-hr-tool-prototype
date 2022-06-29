@@ -1,0 +1,46 @@
+.mat-card {
+  margin: 0 0 30px;
+}
+button {
+  margin-right: 10px;
+}
+
+.div-left {
+  float: left;
+  width: 40%;
+}
+
+.div-right {
+  float: left;
+  width: 60%;
+}
+
+.main-div:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.skill-level-star {
+  color: #03a9f4;
+  display: inline-flex;
+  vertical-align: middle;
+  height: 20px;
+  width: 20px;
+  margin-top: -2px;
+}
+
+.skillname-span {
+  margin: 0;
+  display: inline;
+  float: left;
+  margin-right: 5px;
+}
+
+.title-left {
+  margin: 0;
+  display: inline;
+  float: left;
+  font-weight: bold;
+  margin-right: 5px;
+}

@@ -1,0 +1,55 @@
+.mat-form-field {
+  width: 100%;
+}
+.mat-raised-button {
+  margin: 0 0 0 10px;
+}
+.editProjectView {
+  margin: 0;
+  padding: 10px;
+}
+
+.action-buttons {
+  float: right;
+  padding: 5% 0 0 0;
+}
+
+.add-button {
+  margin-left: 15px;
+}
+
+.project-details {
+  width: 48%;
+  padding: 20px;
+  float: left;
+  background: #e8e8e8;
+}
+
+.employees-on-project {
+  width: 50%;
+  float: right;
+}
+.dialog {
+  right: -140px;
+  position: relative;
+  bottom: 18px;
+  width: 40%;
+}
+a:link {
+  color: blue;
+  cursor: pointer;
+}
+a:hover {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+a:active {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.mat-card {
+  height: 181px;
+}

@@ -1,0 +1,19 @@
+.mat-divider {
+  width: 660px;
+  margin-left: -35px;
+  padding: 0;
+}
+.content {
+  word-break: break-all;
+  padding: 0;
+  margin: 0;
+  min-height: min-content;
+}
+.mat-raised-button {
+  position: relative;
+  bottom: -22px;
+  left: 540px;
+}
+.bottom-div {
+  margin-bottom: 30px;
+}

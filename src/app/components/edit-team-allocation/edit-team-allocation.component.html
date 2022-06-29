@@ -1,0 +1,51 @@
+<div mat-dialog-content>
+  <h3>Project Details - {{ data.project.name }}</h3>
+  <div class="edit-project-form">
+    <form [formGroup]="editProjectForm">
+      <mat-form-field appearance="fill">
+        <mat-label>{{ data.project.manager ? 'Manager' : 'No manager added.' }}</mat-label>
+        <mat-select formControlName="manager">
+          <mat-option *ngFor="let manager of employees" [value]="manager.id"
+            >{{ manager ? manager.firstName + ' ' + manager.lastName : 'No manager added' }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Select new member</mat-label>
+        <mat-select formControlName="employee" (selectionChange)="addEmployeeOnProject($event.value)">
+          <mat-option *ngFor="let employee of filteredEmployees" [value]="employee"
+            >{{ employee.firstName }} {{ employee.lastName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Project FTE</mat-label>
+        <input matInput formControlName="fte" />
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="members">
+    <mat-card *ngIf="data.project.employees">
+      <mat-card-header>
+        <mat-card-title>Members</mat-card-title>
+        <mat-card-subtitle>Employees on {{ data.project.name }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <ul class="list">
+          <li *ngFor="let member of members" [value]="member">
+            {{ member.firstName }} {{ member.lastName }}
+            <div class="delete-button">
+              <button mat-raised-button (click)="deleteEmployeeOnProject(member)" color="warn" style="height: 25px">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+    <button mat-raised-button class="action-button" color="primary" type="submit" (click)="updateProject()">
+      Update
+    </button>
+    <button mat-raised-button class="action-button" color="warn" mat-dialog-close>Cancel</button>
+  </div>
+</div>

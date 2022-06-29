@@ -1,0 +1,23 @@
+<app-breadcumb-toolbar breadcumbPath="Salary Slips"></app-breadcumb-toolbar>
+<div class="container">
+  <form [formGroup]="inputGroup" (ngSubmit)="handleSubmit()" enctype="multipart/form-data">
+    <mat-form-field appearance="fill">
+      <mat-label>Choose file(s):</mat-label>
+      <ngx-mat-file-input [multiple]="multiple" [formControl]="fileControl" name="slips">
+      </ngx-mat-file-input>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Slip Date:</mat-label>
+      <input name="date" formControlName="slipDate" matInput [matDatepicker]="salarySlipDatePicker" />
+      <mat-datepicker-toggle matSuffix [for]="salarySlipDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #salarySlipDatePicker></mat-datepicker>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </form>
+  <div class="files">
+    Selected file(s): {{ files.length }}
+    <ol>
+      <li *ngFor="let item of files">{{ item?.name }}</li>
+    </ol>
+  </div>
+</div>

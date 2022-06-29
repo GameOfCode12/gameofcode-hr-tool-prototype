@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="column column-12">
+    <form class="editConferenceForm" [formGroup]="editConferenceForm" (ngSubmit)="updateConference()">
+      <mat-form-field appearance="fill">
+        <mat-label>Employee</mat-label>
+        <mat-select formControlName="employee" required>
+          <mat-option *ngFor="let employee of employees" [value]="employee.id">
+            {{ employee.firstName }} {{ employee.lastName }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="editConferenceForm.get('employee').hasError('required')">
+          Required: Choose employee
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="conferenceType" required>
+          <mat-option *ngFor="let conferenceType of conferenceTypes" value="{{ conferenceType }}">
+            {{ conferenceType }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="editConferenceForm.get('conferenceType').hasError('required')">
+          Required: Choose conference type
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="conferenceName" required />
+        <mat-error *ngIf="editConferenceForm.get('conferenceName').hasError('required')">
+          Required: Please enter name of conference/training/course
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Date attended</mat-label>
+        <input
+          formControlName="dateAttended"
+          name="dateAttended"
+          matInput
+          [matDatepicker]="dateAttendedPicker"
+          required
+        />
+        <mat-datepicker-toggle matSuffix [for]="dateAttendedPicker"></mat-datepicker-toggle>
+        <mat-datepicker #dateAttendedPicker></mat-datepicker>
+        <mat-error *ngIf="editConferenceForm.get('dateAttended').hasError('matDatepickerParse')">
+          Please check date. No validate date format
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Assigned by</mat-label>
+        <mat-select formControlName="assignedBy" required>
+          <mat-option *ngFor="let employee of employees" [value]="employee.id">
+            {{ employee.firstName }} {{ employee.lastName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Certification</mat-label>
+        <input matInput formControlName="certification" />
+      </mat-form-field>
+      <div class="action-buttons">
+        <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+        <button class="update-button" mat-raised-button type="submit" [disabled]="!editConferenceForm.valid">
+          Update
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

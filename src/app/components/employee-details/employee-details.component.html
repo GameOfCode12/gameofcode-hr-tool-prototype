@@ -1,0 +1,156 @@
+<app-breadcumb-toolbar *ngIf="employee" breadcumbPath="Employees/{{ employee.firstName + ' ' + employee.lastName }}">
+</app-breadcumb-toolbar>
+<div class="container" *ngIf="employee">
+  <div class="column column-12">
+    <!-- Basic information -->
+    <mat-card>
+      <mat-card-title> {{ employee.firstName }} {{ employee.lastName }} </mat-card-title>
+      <mat-card-subtitle> Role: {{ employee.title }} </mat-card-subtitle>
+      <div class="main-div">
+        <div class="div-left">
+          <mat-card-content>
+            <p class="title-left">Email:</p>
+            <p>{{ employee.email }}</p>
+            <p class="title-left">Phone Number:</p>
+            <p>{{ employee.phoneNumber }}</p>
+            <p class="title-left">Birthday:</p>
+            <p>{{ employee.birthday | date }}</p>
+            <p class="title-left">Joined:</p>
+            <p>{{ employee.joinedDate | date }}</p>
+            <p class="title-left">Years in CA:</p>
+            <p>{{ employee.yearsInCA }}</p>
+            <p class="title-left">Vacation Days:</p>
+            <p>{{ employee.vacationDays }}</p>
+            <p class="title-left">Currently On Vacation:</p>
+            <p>{{ employee.onVacation ? 'Yes' : 'No' }}</p>
+            <p class="title-left" *ngIf="employee.lastBonusReceived">Last Bonus Received:</p>
+            <p>{{ employee.lastBonusReceived | date }}</p>
+            <p class="title-left" *ngIf="employee.dateLeft">Date Left:</p>
+            <p>{{ employee.dateLeft | date }}</p>
+            <p class="title-left" *ngIf="employee.salary">Salary:</p>
+            <p>{{ employee.salary.salary }}</p>
+          </mat-card-content>
+        </div>
+
+        <div class="div-right">
+          <mat-card-content>
+            <p class="title-left">Rank:</p>
+            <p>{{ employee.generalRank }}</p>
+            <p class="title-left">Skill Group:</p>
+            <p *ngIf="employee.skillGroup">{{ employee.skillGroup }}</p>
+            <p *ngIf="!employee.skillGroup">No skill group added.</p>
+            <p class="title-left">Domain:</p>
+            <p *ngIf="employee.domain">{{ employee.domain }}</p>
+            <p *ngIf="!employee.domain">No domain added.</p>
+            <p class="title-left" *ngIf="employee.projects && employee.projects.length > 0">Projects:</p>
+            <div *ngFor="let project of employee.projects" style="margin: 0; display: inline">
+              <!-- if the last project in array is output, no comma after it -->
+              <span *ngIf="project === employee.projects[employee.projects.length - 1]; else projectsElseBlock"
+                >{{ project.name }} <br />
+              </span>
+              <!-- all projects before last project in array have comma after it -->
+              <ng-template #projectsElseBlock>{{ project.name }}, </ng-template>
+            </div>
+            <p class="title-left" *ngIf="!employee.projects || employee.projects.length === 0">Projects:</p>
+            <p *ngIf="!employee.projects || employee.projects.length === 0">Unassigned.</p>
+
+            <div style="margin-top: 14px">
+              <p class="title-left" *ngIf="employee.skills && employee.skills.length > 0">Tech Skills:</p>
+              <div style="margin: 0; display: inline" *ngFor="let skill of employee.skills">
+                <span *ngIf="skill === employee.skills[employee.skills.length - 1]; else skillsElseBlock">
+                  <span>
+                    {{ skill.skillname }}
+                  </span>
+                  (<mat-icon class="skill-level-star" [inline]="true" svgIcon="skill-level-star"></mat-icon
+                  >{{ skill.level }})
+                </span>
+                <ng-template #skillsElseBlock>
+                  <span>
+                    {{ skill.skillname }}
+                  </span>
+                  (<mat-icon class="skill-level-star" [inline]="true" svgIcon="skill-level-star"></mat-icon
+                  >{{ skill.level }}),
+                </ng-template>
+              </div>
+            </div>
+            <p class="title-left" *ngIf="!employee.skills || employee.skills.length === 0">Tech skills:</p>
+            <p *ngIf="!employee.skills || employee.skills.length === 0">No added skills.</p>
+          </mat-card-content>
+        </div>
+      </div>
+      <mat-card-controls fxLayout="row" fxLayoutAlign="end end">
+        <button
+          class="edit-button"
+          mat-raised-button
+          color="primary"
+          [routerLink]="['/' + routePaths.Employees + '/' + routePaths.EditEmployee, employee.id]"
+        >
+          Edit Employee
+        </button>
+        <button
+          class="move-button"
+          *ngIf="!employee.dateLeft"
+          mat-raised-button
+          color="accent"
+          (click)="openSetPastEmployeeDialog()"
+        >
+          Move To Past Employees
+        </button>
+      </mat-card-controls>
+    </mat-card>
+
+    <!-- Manager -->
+    <mat-card *ngIf="employee.manager">
+      <mat-card-title>Manager</mat-card-title>
+      <mat-card-subtitle>{{ employee.manager.firstName }} {{ employee.manager.lastName }}</mat-card-subtitle>
+    </mat-card>
+
+    <!-- Project 
+    <mat-card *ngIf="employee.manager">
+      <mat-card-title>Project</mat-card-title>
+      <mat-card-subtitle>Name: {{ employee.project.name }}</mat-card-subtitle>
+    </mat-card>
+-->
+    <!-- Emergency contact -->
+    <mat-card>
+      <mat-card-title>Emergency Contact</mat-card-title>
+      <mat-card-content>
+        <p class="title-left">Name:</p>
+        <p>
+          {{ employee.emergency_contact.firstName }}
+          {{ employee.emergency_contact.lastName }}
+        </p>
+        <p class="title-left">Relationship:</p>
+        <p>{{ employee.emergency_contact.relationship }}</p>
+        <p class="title-left">Phone Number:</p>
+        <p>{{ employee.emergency_contact.phoneNumber }}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Salary -->
+    <mat-card>
+      <mat-card-title>Salary</mat-card-title>
+      <mat-card-subtitle>
+        {{ employee.salary.created_at | date }}
+      </mat-card-subtitle>
+      <mat-card-content>
+        <p class="title-left">Amount:</p>
+        <p>{{ employee.salary.salary }} (USD: {{ employee.salary.amtInDollar | currency }})</p>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Book Requests -->
+    <!-- <ng-container *ngIf="employee.book_requests">
+    <div class="employee-info-container">
+      <h3>Book Requests:</h3>
+      <div
+        class="employee-book-request"
+        *ngFor="let request of employee.book_requests"
+      >
+        <p>{{ request.book.title }} by {{ request.book.author }}</p>
+        <p>Status: {{ request.approved }}</p>
+      </div>
+    </div>
+  </ng-container> -->
+  </div>
+</div>

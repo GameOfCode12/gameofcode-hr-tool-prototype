@@ -1,0 +1,36 @@
+<app-breadcumb-toolbar breadcumbPath="Asset Models/Edit Asset Model"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <button mat-raised-button (click)="goBack()" color="primary">&laquo; Back</button>
+    </div>
+  </div>
+  <div class="column column-12">
+    <form class="editEquipmentModelForm" [formGroup]="editEquipmentModelForm" (ngSubmit)="updateEquipmentModel()">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required />
+        <mat-error *ngIf="editEquipmentModelForm.get('name').hasError('required')">
+          Required: Please enter name of asset model
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category">
+          <mat-option *ngFor="let category of categories" value="{{ category }}">
+            {{ category }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>ModelNo</mat-label>
+        <input matInput formControlName="modelno" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Manufacturer</mat-label>
+        <input matInput formControlName="manufacturer" />
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!editEquipmentModelForm.valid">Save</button>
+    </form>
+  </div>
+</div>

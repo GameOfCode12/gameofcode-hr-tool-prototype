@@ -1,0 +1,60 @@
+<app-breadcumb-toolbar breadcumbPath="Referrals"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <button mat-raised-button color="primary" [routerLink]="['/referrals/add-referral']">Add Referral</button>
+    </div>
+  </div>
+  <div class="column column-12">
+    <table mat-table [dataSource]="referrals" class="mat-elevation-z8">
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef>First Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef>Last Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="employeeReferral">
+        <th mat-header-cell *matHeaderCellDef>Employee Referral</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.employeeReferralFirstName + ' ' + element.employeeReferralLastName }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="trialEnds">
+        <th mat-header-cell *matHeaderCellDef>Trial Ends</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.trialEnds }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="bonusPaid">
+        <th mat-header-cell *matHeaderCellDef>Bonus Paid</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.bonusPaid ? "Yes" : "No" }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="referralBonus">
+        <th mat-header-cell *matHeaderCellDef>Referral Bonus (KM)</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.referralBonus }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="note">
+        <th mat-header-cell *matHeaderCellDef>Note</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.note}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="column-align-end">Action</th>
+        <td mat-cell *matCellDef="let element" class="column-align-end">
+          <button mat-raised-button color="primary" routerLink="/referrals/{{element.id}}"><mat-icon>edit</mat-icon></button>
+          <button mat-raised-button color="warn" (click)="deleteReferral(element)"><mat-icon>delete</mat-icon></button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="referralColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: referralColumns"></tr>
+    </table>
+  </div>
+</div>
+

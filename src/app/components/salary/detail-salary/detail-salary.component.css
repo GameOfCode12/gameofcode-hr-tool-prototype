@@ -1,0 +1,23 @@
+.detailsList {
+  float: left;
+  width: 100%;
+  background: #fff;
+  list-style: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  padding: 0;
+  margin: 0 0 30px;
+}
+.detailsList > li {
+  padding: 15px 20px;
+}
+.detailsList > li > h4 {
+  font-weight: 600;
+  margin: 5px;
+}
+.detailsList > li > em {
+  font-style: italic;
+  color: #777;
+}
+.detailsList > li:nth-child(even) {
+  background: #f6f6f6;
+}

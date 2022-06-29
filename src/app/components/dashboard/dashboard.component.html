@@ -1,0 +1,9 @@
+<mat-drawer-container class="app-dashboard-container">
+  <mat-drawer #drawer class="app-navigation" mode="side" opened>
+    <app-navigation></app-navigation>
+  </mat-drawer>
+  <div class="contentWrap">
+    <button class="sidenav-btn" type="button" mat-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

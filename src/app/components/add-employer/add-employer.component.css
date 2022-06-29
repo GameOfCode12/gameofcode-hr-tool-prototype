@@ -1,0 +1,32 @@
+.addEmployerForm {
+  width: 100%;
+  margin: 0 0 30px;
+  float: left;
+}
+
+.mat-form-field {
+  width: 30%;
+  padding: 0 10px;
+  margin: 0 20px;
+}
+
+.formgroupfields {
+  background: #e8e8e8;
+  padding: 20px;
+  margin: 0 0 20px;
+  border-radius: 3px;
+}
+
+.formgroupfields > h3 {
+  padding: 0 20px;
+}
+
+.add-button {
+  margin-left: 15px;
+  background-color: #03a9f4;
+  color: #fff;
+}
+
+.action-buttons {
+  float: right;
+}

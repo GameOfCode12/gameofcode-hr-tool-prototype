@@ -1,0 +1,47 @@
+<div class="container">
+  <form class="editProjectForm" [formGroup]="editProjectForm">
+    <div class="project-details">
+      <h3>Project Details</h3>
+      <mat-form-field appearance="fill">
+        <mat-label>Project Name</mat-label>
+        <input matInput formControlName="name" required />
+        <mat-error *ngIf="editProjectForm.get('name').hasError('required')"></mat-error>
+      </mat-form-field>
+    </div>
+    <div class="employees-on-project">
+      <mat-card *ngIf="project.employees">
+        <mat-card-header>
+          <mat-card-title>Employees</mat-card-title>
+          <mat-card-subtitle>Employees on {{ project.name }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <ul *ngIf="project.employees.length < 6">
+            <li *ngFor="let employee of project.employees">
+              <ng-container>
+                <ng-container>{{ employee.firstName }} {{ employee.lastName }}</ng-container>
+              </ng-container>
+            </li>
+          </ul>
+          <ul *ngIf="project.employees.length > 5">
+            <li *ngFor="let employee of reducedEmployees; let i = index">
+              <ng-container>
+                <ng-container>{{ employee.firstName }} {{ employee.lastName }}</ng-container>
+              </ng-container>
+            </li>
+            <div class="dialog">
+              <ng-container
+                ><a (click)="openEmployeesViewDialog(project)"> + {{ project.employees.length - 5 }} more</a>
+              </ng-container>
+            </div>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </form>
+  <div class="action-buttons">
+    <button mat-raised-button color="primary" (click)="updateProject()" [disabled]="!editProjectForm.valid">
+      Update
+    </button>
+    <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+  </div>
+</div>

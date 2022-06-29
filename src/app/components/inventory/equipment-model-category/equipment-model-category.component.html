@@ -1,0 +1,37 @@
+<app-breadcumb-toolbar breadcumbPath="Equipment Model Categories"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <button mat-raised-button color="primary" [routerLink]="['/equipment-model-categories/add']">
+        Add Equipment Model Category
+      </button>
+    </div>
+  </div>
+  <div class="column column-12">
+    <table mat-table [dataSource]="equipmentModelCategoryDataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let equipmentModelCategory">
+          {{ equipmentModelCategory.name ? equipmentModelCategory.name : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="column-align-end">Actions</th>
+        <td mat-cell *matCellDef="let equipmentModelCategory" class="column-align-end">
+          <button
+            mat-raised-button
+            routerLink="/equipment-model-categories/edit/{{ equipmentModelCategory.id }}"
+            color="primary"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-raised-button color="warn" (click)="deleteEquipmentModelCategory(equipmentModelCategory)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="equipmentModelCategoryTableColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: equipmentModelCategoryTableColumns"></tr>
+    </table>
+  </div>
+</div>

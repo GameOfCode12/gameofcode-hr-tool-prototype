@@ -1,0 +1,114 @@
+<app-breadcumb-toolbar breadcumbPath="Equipments"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <button mat-raised-button color="primary" [routerLink]="['/equipments/add']">Add Equipment</button>
+      <button mat-raised-button color="primary" [routerLink]="['/equipment-models']">Equipment Model</button>
+      <button mat-raised-button color="primary" [routerLink]="['/equipment-locations']">Equipment Location</button>
+      <button mat-raised-button color="primary" [routerLink]="['/equipment-suppliers']">Equipment Supplier</button>
+      <button mat-raised-button color="primary" [routerLink]="['/equipment-companies']">Equipment Companies</button>
+    </div>
+  </div>
+  <div class="column column-12">
+    <table mat-table [dataSource]="equipmentDataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="assetTag">
+        <th mat-header-cell *matHeaderCellDef>Asset Tag</th>
+        <td mat-cell *matCellDef="let equipment">
+          {{ equipment.assetTag ? equipment.assetTag : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="serial">
+        <th mat-header-cell *matHeaderCellDef>Serial</th>
+        <td mat-cell *matCellDef="let equipment">
+          {{ equipment.serial ? equipment.serial : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="model">
+        <th mat-header-cell *matHeaderCellDef>Model</th>
+        <td mat-cell *matCellDef="let equipment">
+          {{ equipment.model ? equipment.model.name : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let equipment">
+          {{ equipment.status ? equipment.status : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="checkedOutTo">
+        <th mat-header-cell *matHeaderCellDef>Checked Out To</th>
+        <td mat-cell *matCellDef="let equipment">
+          {{
+            equipment.employee && equipment.employee.firstName && equipment.employee.lastName
+              ? equipment.employee.firstName + ' ' + equipment.employee.lastName
+              : '---'
+          }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef>Location</th>
+        <td mat-cell *matCellDef="let equipment">
+          {{ equipment.location ? equipment.location.name : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef>Category</th>
+        <td mat-cell *matCellDef="let equipment">
+          {{ equipment.model ? equipment.model.category : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="eol">
+        <th mat-header-cell *matHeaderCellDef>EOL</th>
+        <td mat-cell *matCellDef="let equipment"></td>
+      </ng-container>
+      <ng-container matColumnDef="notes">
+        <th mat-header-cell *matHeaderCellDef>Notes</th>
+        <td mat-cell *matCellDef="let equipment">
+          {{ equipment.notes ? equipment.notes : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="orderNumber">
+        <th mat-header-cell *matHeaderCellDef>Order Number</th>
+        <td mat-cell *matCellDef="let equipment">
+          {{ equipment.orderNumber ? equipment.orderNumber : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="checkoutDate">
+        <th mat-header-cell *matHeaderCellDef>Checkout Date</th>
+        <td mat-cell *matCellDef="let equipment">
+          {{ equipment.checkoutDate ? (equipment.checkoutDate | date) : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="expectedCheckinDate">
+        <th mat-header-cell *matHeaderCellDef>Expected Chekin Date</th>
+        <td mat-cell *matCellDef="let equipment">
+          {{ equipment.expectedCheckinDate ? equipment.expectedCheckinDate : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="inOut">
+        <th mat-header-cell *matHeaderCellDef>In/Out</th>
+        <td mat-cell *matCellDef="let equipment">
+          <button *ngIf="!equipment.checkoutDate" mat-mini-fab color="primary" (click)="checkOutEquipment(equipment)">
+            <mat-icon>arrow_forward</mat-icon>
+          </button>
+          <button *ngIf="equipment.checkoutDate" mat-mini-fab color="accent" (click)="checkInEquipment(equipment)">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="column-align-end">Actions</th>
+        <td mat-cell *matCellDef="let equipment" class="column-align-end">
+          <button mat-raised-button routerLink="/equipments/edit/{{ equipment.id }}" color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-raised-button color="warn" (click)="deleteEquipment(equipment)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="equipmentTableColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: equipmentTableColumns"></tr>
+    </table>
+  </div>
+</div>

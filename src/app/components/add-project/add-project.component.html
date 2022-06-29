@@ -1,0 +1,10 @@
+<form class="addProjectForm" [formGroup]="addProjectForm" (ngSubmit)="addProject()">
+  <h3>Add Project</h3>
+  <mat-form-field appearance="fill">
+    <mat-label>Project Name</mat-label>
+      <input matInput formControlName="name" required>
+    <mat-error *ngIf="addProjectForm.get('name').hasError('required')"></mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="warn" (click)="closeAddProjectDialog()" >Close</button>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!addProjectForm.valid">Add Project</button>
+</form>

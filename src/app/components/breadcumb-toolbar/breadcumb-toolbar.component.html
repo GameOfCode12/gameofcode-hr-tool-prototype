@@ -1,0 +1,67 @@
+<nav class="breadcumb">
+  <div
+    *ngIf="isProjectPath()"
+    [ngClass]="{
+      'project-path': isProjectPath(),
+      'team-allocation-path': isTeamAllocationPath(),
+      'project-path-hidden': !isProjectPath()
+    }"
+  >
+    <mat-tab-group
+      animationDuration="0ms"
+      #tabGroup
+      [selectedIndex]="0"
+      (selectedIndexChange)="myTabSelectedIndexChange($event)"
+    >
+      <mat-tab label="Projects"></mat-tab>
+      <mat-tab label="Team Allocation"></mat-tab>
+    </mat-tab-group>
+  </div>
+  <div
+    *ngIf="isTeamAllocationPath()"
+    [ngClass]="{
+      'team-allocation-path': isTeamAllocationPath(),
+      'team-allocation-hidden': !isTeamAllocationPath()
+    }"
+  >
+    <mat-tab-group
+      animationDuration="0ms"
+      #tabGroup
+      [selectedIndex]="1"
+      (selectedIndexChange)="myTabSelectedIndexChange($event)"
+    >
+      <mat-tab label="Projects"></mat-tab>
+      <mat-tab label="Team Allocation"></mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div *ngIf="!isProjectPath() && !isTeamAllocationPath()">
+    <ol *ngIf="pathArray.length > 0" class="breadcumb-list">
+      <li *ngFor="let path of pathArray" class="breadcrumb-item">
+        <span>{{ path }}</span>
+      </li>
+    </ol>
+  </div>
+  <div class="breadcumb-actions">
+    <button mat-raised-button *ngIf="router.url === '/employees-skills'" (click)="addEmployee()" color="primary">
+      Add Employee
+    </button>
+    <button [matMenuTriggerFor]="menu" *ngIf="isLogged" mat-raised-button>
+      {{ userData.employee.firstName }} {{ userData.employee.lastName }}
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['/', routePaths.Profile]">
+        <mat-icon>face</mat-icon>
+        <span>Profile</span>
+      </button>
+      <button [routerLink]="['/', routePaths.Settings]" mat-menu-item>
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+      </button>
+      <button (click)="logout()" mat-menu-item>
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
+</nav>

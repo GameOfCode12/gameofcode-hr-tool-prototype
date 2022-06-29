@@ -1,0 +1,20 @@
+<app-breadcumb-toolbar breadcumbPath="Equipment Companies/Add Equipment Company"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <button mat-raised-button (click)="goBack()" color="primary">&laquo; Back</button>
+    </div>
+  </div>
+  <div class="column column-12">
+    <form class="addEquipmentCompanyForm" [formGroup]="addEquipmentCompanyForm" (ngSubmit)="addEquipmentCompany()">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required />
+        <mat-error *ngIf="addEquipmentCompanyForm.get('name').hasError('required')">
+          Required: Please enter name of equipment company
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!addEquipmentCompanyForm.valid">Add</button>
+    </form>
+  </div>
+</div>

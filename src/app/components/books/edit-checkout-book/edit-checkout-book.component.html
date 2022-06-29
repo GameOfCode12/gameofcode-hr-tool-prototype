@@ -1,0 +1,53 @@
+<app-breadcumb-toolbar breadcumbPath="Books/Book Checkout/Edit"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <button mat-raised-button color="primary" [routerLink]="['/books/book-checkout']">Back</button>
+    </div>
+  </div>
+  <div class="column column-12">
+    <form class="editBookCheckoutForm" [formGroup]="editBookCheckoutForm" (ngSubmit)="updateBookCheckout()">
+      <mat-form-field appearance="fill">
+        <mat-label>Employee</mat-label>
+        <mat-select formControlName="employeeId">
+          <mat-option *ngFor="let employee of employees" value="{{ employee.id }}">
+            {{ employee.firstName}} {{ employee.lastName }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="editBookCheckoutForm.get('employeeId').hasError('required')">
+          Required: Choose employee
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Book(Author)</mat-label>
+        <mat-select formControlName="bookId">
+          <mat-option *ngFor="let book of books" value="{{ book.id }}">
+            {{ book.title}} ({{ book.author }})
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="editBookCheckoutForm.get('bookId').hasError('required')">
+          Required: Choose book
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Date Borrowed</mat-label>
+        <input formControlName="dateBorrowed" name="dateBorrowed" matInput [matDatepicker]="dateBorrowedPicker" required/>
+        <mat-datepicker-toggle matSuffix [for]="dateBorrowedPicker"></mat-datepicker-toggle>
+        <mat-datepicker #dateBorrowedPicker></mat-datepicker>
+        <mat-error *ngIf="editBookCheckoutForm.get('dateBorrowed').hasError('required')">
+          Required: Choose date borrowed
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Date Returned</mat-label>
+        <input formControlName="dateReturned" [min]="editBookCheckoutForm.value.dateBorrowed" name="dateReturned" matInput [matDatepicker]="dateReturnedPicker"/>
+        <mat-datepicker-toggle matSuffix [for]="dateReturnedPicker"></mat-datepicker-toggle>
+        <mat-datepicker #dateReturnedPicker></mat-datepicker>
+        <mat-error *ngIf="editBookCheckoutForm.get('dateReturned').hasError('matDatepickerMin')">
+          Date returned must been greater then date borrowed
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!editBookCheckoutForm.valid">Update</button>
+    </form>
+  </div>
+</div>

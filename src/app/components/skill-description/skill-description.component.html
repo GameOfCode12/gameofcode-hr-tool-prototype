@@ -1,0 +1,21 @@
+<mat-card-title style="margin-top: -10px">{{ data.employee.firstName }} {{ data.employee.lastName }}</mat-card-title>
+<mat-divider></mat-divider>
+<div style="margin-top: 15px">
+  <mat-card-subtitle
+    ><h2>
+      {{ data.skill.skillname }}(<mat-icon
+        class="skill-level-star"
+        [inline]="true"
+        svgIcon="skill-level-star"
+      ></mat-icon
+      >{{ data.skill.level }})
+    </h2>
+  </mat-card-subtitle>
+  <div class="content">
+    {{ data.skill.description }}
+  </div>
+  <div class="bottom-div">
+    <mat-divider style="margin-top: 100px"></mat-divider>
+    <button type="submit" mat-raised-button color="primary" mat-dialog-close>Close</button>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<app-breadcumb-toolbar breadcumbPath="Non Working Holidays"></app-breadcumb-toolbar>
+
+<div class="column column-12">
+  <div class="actionToolbar">
+    <button class="add-edit-button" mat-raised-button (click)="addHoliday()">Add A New Holiday</button>
+    <button mat-raised-button (click)="exportNonWorkingHolidayList()">Export Non-working Holiday List</button>
+    <button mat-raised-button (click)="printNonWorkingHolidays()">Print</button>
+  </div>
+  <table mat-table [dataSource]="nonWorkingHolidays" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateCelebrated">
+      <th mat-header-cell *matHeaderCellDef>Date Celebreted</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.dateCelebrated }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nonWorkingDayDate">
+      <th mat-header-cell *matHeaderCellDef>Non-working Day Date</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.nonWorkingDayDate }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef class="column-align-end">Action</th>
+      <td mat-cell *matCellDef="let element" class="column-align-end">
+        <button class="add-edit-button" mat-raised-button (click)="editHoliday(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-raised-button class="delete-button" color="warn" (click)="deleteHoliday(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+  </table>
+</div>

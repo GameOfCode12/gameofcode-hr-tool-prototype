@@ -1,0 +1,29 @@
+li::after {
+  content: ' ';
+}
+.mat-tab-group {
+  margin-bottom: 0px;
+  position: relative;
+  margin-top: 18px;
+}
+.project-path {
+  align-items: flex-end;
+  position: relative;
+  right: -38px;
+  bottom: -3px;
+}
+.project-path-hidden {
+  display: none;
+}
+::ng-deep .breadcumb {
+  padding: 0px 25px;
+}
+.team-allocation-path {
+  align-items: flex-end;
+  position: relative;
+  right: -38px;
+  bottom: -3px;
+}
+.team-allocation-path-hidden {
+  display: none;
+}

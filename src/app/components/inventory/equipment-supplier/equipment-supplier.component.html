@@ -1,0 +1,63 @@
+<app-breadcumb-toolbar breadcumbPath="Equipment Suppliers"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <button mat-raised-button color="primary" [routerLink]="['/equipment-suppliers/add']">
+        Add Equipment Supplier
+      </button>
+    </div>
+  </div>
+  <div class="column column-12">
+    <table mat-table [dataSource]="equipmentSupplierDataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let equipmentSupplier">
+          {{ equipmentSupplier.name ? equipmentSupplier.name : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="contactPerson">
+        <th mat-header-cell *matHeaderCellDef>Contact Person</th>
+        <td mat-cell *matCellDef="let equipmentSupplier">
+          {{ equipmentSupplier.contactPerson ? equipmentSupplier.contactPerson : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>Phone</th>
+        <td mat-cell *matCellDef="let equipmentSupplier">
+          {{ equipmentSupplier.phone ? equipmentSupplier.phone : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="fax">
+        <th mat-header-cell *matHeaderCellDef>Fax</th>
+        <td mat-cell *matCellDef="let equipmentSupplier">
+          {{ equipmentSupplier.fax ? equipmentSupplier.fax : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let equipmentSupplier">
+          {{ equipmentSupplier.email ? equipmentSupplier.email : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef>Address</th>
+        <td mat-cell *matCellDef="let equipmentSupplier">
+          {{ equipmentSupplier.address ? equipmentSupplier.address : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="column-align-end">Actions</th>
+        <td mat-cell *matCellDef="let equipmentSupplier" class="column-align-end">
+          <button mat-raised-button routerLink="/equipment-suppliers/edit/{{ equipmentSupplier.id }}" color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-raised-button color="warn" (click)="deleteEquipmentSupplier(equipmentSupplier)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="equipmentSuppliersTableColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: equipmentSuppliersTableColumns"></tr>
+    </table>
+  </div>
+</div>

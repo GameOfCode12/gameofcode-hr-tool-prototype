@@ -1,0 +1,57 @@
+.mat-raised-button {
+  margin: 0 10px 0 0;
+}
+.column-align-end {
+  text-align: end;
+  width: 110px;
+}
+.column-align-end .mat-raised-button {
+  margin: 0 0 0 10px;
+}
+li::after {
+  content: ' ';
+}
+.container {
+  position: relative;
+  top: 50px;
+}
+td {
+  height: 163px !important;
+  line-height: 27px;
+  align-items: stretch;
+}
+a:link {
+  color: blue;
+  cursor: pointer;
+}
+a:hover {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+a:active {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.dialog {
+  right: -130px;
+  position: relative;
+  bottom: 27px;
+}
+.tab {
+  align-items: flex-end;
+  position: relative;
+  right: -38px;
+  bottom: -3px;
+}
+.mat-column-fte {
+  flex: none;
+  width: 20%;
+}
+.mat-column-manager {
+  flex: none;
+  width: 20%;
+}

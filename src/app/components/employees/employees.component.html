@@ -1,0 +1,85 @@
+<app-breadcumb-toolbar breadcumbPath="Employees"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <button class="add-edit-button" mat-raised-button (click)="addEmployee()">Add Employee</button>
+      <button mat-raised-button (click)="exportMailingPhoneList()">Export Mailing & Phone List</button>
+      <div class="filter-form-field">
+        <input (keyup)="filterByName($event)" placeholder="Filter by Name" />
+      </div>
+    </div>
+  </div>
+  <div class="column column-12">
+    <table id="employee-table" mat-table [dataSource]="employeeDataSource">
+      <ng-container matColumnDef="firstName" sticky>
+        <th style="width: 10%" mat-header-cell *matHeaderCellDef>First Name</th>
+        <td mat-cell *matCellDef="let employee">{{ employee.firstName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastName">
+        <th style="width: 10%" mat-header-cell *matHeaderCellDef>Last Name</th>
+        <td mat-cell *matCellDef="let employee">{{ employee.lastName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="manager">
+        <th style="width: 10%" mat-header-cell *matHeaderCellDef>Manager</th>
+        <td mat-cell *matCellDef="let employee">
+          {{
+            employee.manager !== null &&
+            employee.manager !== undefined &&
+            employee.manager.firstName !== undefined &&
+            employee.manager.lastName !== undefined
+              ? employee.manager.firstName + ' ' + employee.manager.lastName
+              : '---'
+          }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="salary">
+        <th style="width: 10%" mat-header-cell *matHeaderCellDef>Salary</th>
+        <td mat-cell *matCellDef="let employee">
+          {{ employee.salary !== null && employee.salary.salary !== undefined ? employee.salary.salary : '---' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th style="width: 30%" mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let employee">
+          {{ employee.email }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastBonusReceived">
+        <th style="width: 10%" mat-header-cell *matHeaderCellDef>Last Bonus Received</th>
+        <td mat-cell *matCellDef="let employee">
+          {{ employee.lastBonusReceived }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="yearsInCA">
+        <th style="width: 9%; text-align: center" mat-header-cell *matHeaderCellDef>Years in CA</th>
+        <td style="text-align: center" mat-cell *matCellDef="let employee">
+          {{ employee.yearsInCA }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action" stickyEnd>
+        <th style="width: 11%" mat-header-cell *matHeaderCellDef class="column-align-end">Action</th>
+        <td mat-cell *matCellDef="let employee" class="column-align-end">
+          <button
+            class="view-employee-button"
+            matTooltip="View Employee"
+            mat-raised-button
+            [routerLink]="[employee.id]"
+          >
+            <mat-icon>sort</mat-icon>
+          </button>
+          <button class="add-edit-button" matTooltip="Edit Employee" mat-raised-button (click)="editEmployee(employee)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="employeesTableColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: employeesTableColumns" #row></tr>
+    </table>
+  </div>
+</div>

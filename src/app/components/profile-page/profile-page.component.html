@@ -1,0 +1,74 @@
+<div class="container" *ngIf="employee">
+  <div class="column column-12">
+    <!-- Basic information -->
+    <mat-card style="margin-top: 10px">
+      <mat-card-title> {{ employee.firstName }} {{ employee.lastName }} </mat-card-title>
+      <mat-card-subtitle> Role: {{ employee.title }} </mat-card-subtitle>
+      <mat-card-content>
+        <p>Email: {{ employee.email }}</p>
+        <p>Phone Number: {{ employee.phoneNumber }}</p>
+        <p>Birthday: {{ employee.birthday | date }}</p>
+        <p>Joined: {{ employee.joinedDate | date }}</p>
+        <p>Years in CA: {{ employee.yearsInCA }}</p>
+        <p>Vacation Days: {{ employee.vacationDays }}</p>
+        <p>Currently On Vacation: {{ employee.onVacation ? 'Yes' : 'No' }}</p>
+        <p *ngIf="employee.lastBonusReceived">Last Bonus Received: {{ employee.lastBonusReceived | date }}</p>
+        <p *ngIf="employee.dateLeft">Date Left: {{ employee.dateLeft | date }}</p>
+      </mat-card-content>
+      <mat-card-controls>
+        <button mat-raised-button color="warn" (click)="logOut()">Log Out</button>
+      </mat-card-controls>
+    </mat-card>
+
+    <!-- Manager -->
+    <mat-card *ngIf="employee.manager">
+      <mat-card-title>Manager</mat-card-title>
+      <mat-card-subtitle>{{ employee.manager.firstName }} {{ employee.manager.lastName }}</mat-card-subtitle>
+    </mat-card>
+
+    <!-- Project -->
+    <mat-card *ngIf="employee.manager">
+      <mat-card-title>Project</mat-card-title>
+      <mat-card-subtitle>Name: {{ employee.project.name }}</mat-card-subtitle>
+    </mat-card>
+
+    <!-- Emergency contact -->
+    <mat-card>
+      <mat-card-title>Emergency Contact</mat-card-title>
+      <mat-card-content>
+        <p>
+          Name:
+          {{ employee.emergency_contact.firstName }}
+          {{ employee.emergency_contact.lastName }}
+        </p>
+        <p>Relationship: {{ employee.emergency_contact.relationship }}</p>
+        <p>Phone Number: {{ employee.emergency_contact.phoneNumber }}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Salary -->
+    <mat-card>
+      <mat-card-title>Salary</mat-card-title>
+      <mat-card-subtitle>
+        {{ employee.salary.created_at | date }}
+      </mat-card-subtitle>
+      <mat-card-content>
+        <p>Amount: {{ employee.salary.salary }} (USD: {{ employee.salary.amtInDollar | currency }})</p>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Book Requests -->
+    <!-- <ng-container *ngIf="employee.book_requests">
+    <div class="employee-info-container">
+      <h3>Book Requests:</h3>
+      <div
+        class="employee-book-request"
+        *ngFor="let request of employee.book_requests"
+      >
+        <p>{{ request.book.title }} by {{ request.book.author }}</p>
+        <p>Status: {{ request.approved }}</p>
+      </div>
+    </div>
+  </ng-container> -->
+  </div>
+</div>

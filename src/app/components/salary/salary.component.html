@@ -1,0 +1,139 @@
+<app-breadcumb-toolbar breadcumbPath="Salary"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <div class="filter-form-field">
+        <input (keyup)="filterByName($event)" placeholder="Filter by Name" />
+      </div>
+    </div>
+  </div>
+  <div class="column column-12">
+    <div class="table-fix-overflow">
+      <table mat-table [dataSource]="salaryDataSource">
+        <ng-container matColumnDef="firstName" sticky>
+          <th mat-header-cell *matHeaderCellDef>First Name</th>
+          <td mat-cell *matCellDef="let salary">{{ salary.employee.firstName }}</td>
+        </ng-container>
+        <ng-container matColumnDef="lastName" sticky>
+          <th mat-header-cell *matHeaderCellDef>Last Name</th>
+          <td mat-cell *matCellDef="let salary">{{ salary.employee.lastName }}</td>
+        </ng-container>
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>Role</th>
+          <td mat-cell *matCellDef="let salary">
+            {{ salary.employee.title }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="yearsInCa">
+          <th mat-header-cell *matHeaderCellDef>Years In CA</th>
+          <td mat-cell *matCellDef="let salary">
+            {{ salary.employee.yearsInCA }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="contractExpiry">
+          <th mat-header-cell *matHeaderCellDef>Contract Expiry</th>
+          <td mat-cell *matCellDef="let salary">
+            {{ salary.contractExpiry }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastRaise">
+          <th mat-header-cell *matHeaderCellDef>Last Raise</th>
+          <td mat-cell *matCellDef="let salary">
+            {{ salary.lastRaise }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="salary">
+          <th mat-header-cell *matHeaderCellDef>Salary</th>
+          <td mat-cell *matCellDef="let salary">
+            {{ salary.salary }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="suggestedRaise">
+          <th mat-header-cell *matHeaderCellDef>Suggested Raise</th>
+          <td mat-cell *matCellDef="let salary">
+            {{ salary.suggestedRaise }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="final">
+          <th mat-header-cell *matHeaderCellDef>Final</th>
+          <td mat-cell *matCellDef="let salary">
+            {{ salary.final }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="amtInDollar">
+          <th mat-header-cell *matHeaderCellDef>Amt in $</th>
+          <td mat-cell *matCellDef="let salary">
+            {{ salary.amtInDollar }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="comments">
+          <th mat-header-cell *matHeaderCellDef>Comments</th>
+          <td mat-cell *matCellDef="let salary">
+            <a class="view-comments" (click)="viewSalaryComments(salary)" *ngIf="salary.comments">View Comments</a>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="action" stickyEnd>
+          <th mat-header-cell *matHeaderCellDef class="column-align-end">Action</th>
+          <td mat-cell *matCellDef="let salary" class="column-align-end">
+            <button class="view-employee-button" mat-raised-button routerLink="/salaries/{{ salary.id }}">
+              <mat-icon>sort</mat-icon>
+            </button>
+            <button class="edit-button" mat-raised-button (click)="editSalary(salary)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="salaryTableColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: salaryTableColumns"></tr>
+      </table>
+    </div>
+  </div>
+
+  <!--<div class="column column-12">
+    <h1>Suggested Raises:</h1>
+    <table mat-table [dataSource]="suggestedRaisesDataSource">
+      <ng-container matColumnDef="firstName" sticky>
+        <th style="width: 15%" mat-header-cell *matHeaderCellDef>First Name</th>
+        <td mat-cell *matCellDef="let salary">{{ salary.employee.firstName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="lastName" sticky>
+        <th style="width: 15%" mat-header-cell *matHeaderCellDef>Last Name</th>
+        <td mat-cell *matCellDef="let salary">{{ salary.employee.lastName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastRaise">
+        <th style="width: 15%" mat-header-cell *matHeaderCellDef>Last Raise</th>
+        <td mat-cell *matCellDef="let salary">
+          {{ salary.lastRaise }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="salary">
+        <th style="width: 15%" mat-header-cell *matHeaderCellDef>Salary</th>
+        <td mat-cell *matCellDef="let salary">
+          {{ salary.salary }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="suggestedRaise">
+        <th style="width: 15%" mat-header-cell *matHeaderCellDef>Suggested Raise</th>
+        <td mat-cell *matCellDef="let salary">
+          {{ salary.suggestedRaise }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef class="column-align-end">Action</th>
+        <td mat-cell *matCellDef="let salary" class="column-align-end">
+          <button (click)="approveRaise(salary)" class="approve-button" matTooltip="Approve Raise" mat-raised-button>
+            <mat-icon>done</mat-icon>
+          </button>
+          <button (click)="declineRaise(salary)" color="warn" matTooltip="Decline Raise" mat-raised-button>
+            <mat-icon>clear</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="suggestedRaisesTableColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: suggestedRaisesTableColumns"></tr>
+    </table>
+  </div>-->
+</div>

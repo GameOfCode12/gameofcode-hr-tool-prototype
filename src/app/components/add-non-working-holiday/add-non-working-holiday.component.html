@@ -1,0 +1,47 @@
+<form [formGroup]="addNonWorkingHolidayForm" (ngSubmit)="addNonWorkingHoliday()">
+  <mat-form-field appearance="fill">
+    <mat-label>Holiday Name</mat-label>
+    <input formControlName="name" name="name" type="text" matInput required />
+  </mat-form-field>
+  <br />
+
+  <mat-form-field appearance="fill">
+    <mat-label>Date Celebrated:</mat-label>
+    <input
+      formControlName="dateCelebrated"
+      name="dateCelebrated"
+      matInput
+      [matDatepicker]="dateCelebratedPicker"
+      required
+    />
+    <mat-datepicker-toggle matSuffix [for]="dateCelebratedPicker"></mat-datepicker-toggle>
+    <mat-datepicker #dateCelebratedPicker></mat-datepicker>
+    <mat-error *ngIf="addNonWorkingHolidayForm.get('dateCelebrated').hasError('required')"></mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Non Working Day Date</mat-label>
+    <input
+      formControlName="nonWorkingDayDate"
+      name="nonWorkingDayDate"
+      matInput
+      [matDatepicker]="nonWorkingDayDatePicker"
+      required
+    />
+    <mat-datepicker-toggle matSuffix [for]="nonWorkingDayDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #nonWorkingDayDatePicker></mat-datepicker>
+    <mat-error *ngIf="addNonWorkingHolidayForm.get('nonWorkingDayDate').hasError('required')"></mat-error>
+  </mat-form-field>
+
+  <div class="action-buttons">
+    <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+    <button
+      class="add-button"
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!addNonWorkingHolidayForm.valid"
+    >
+      Add
+    </button>
+  </div>
+</form>

@@ -1,0 +1,12 @@
+.addReferralForm {
+  width:100%;
+  margin:0 0 30px;
+  padding:0 10px;
+}
+.mat-form-field {
+  width:50%;
+  padding:0 10px;
+}
+.mat-form-field-w100 {
+  width:100%;
+}

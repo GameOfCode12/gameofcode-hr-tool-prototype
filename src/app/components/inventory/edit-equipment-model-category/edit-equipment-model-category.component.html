@@ -1,0 +1,26 @@
+<app-breadcumb-toolbar breadcumbPath="Equipment Model Categories/Edit Equipment Model Category"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <button mat-raised-button (click)="goBack()" color="primary">&laquo; Back</button>
+    </div>
+  </div>
+  <div class="column column-12">
+    <form
+      class="editEquipmentModelCategoryForm"
+      [formGroup]="editEquipmentModelCategoryForm"
+      (ngSubmit)="updateEquipmentModelCategory()"
+    >
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required />
+        <mat-error *ngIf="editEquipmentModelCategoryForm.get('name').hasError('required')">
+          Required: Please enter name of equipment model category
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!editEquipmentModelCategoryForm.valid">
+        Save
+      </button>
+    </form>
+  </div>
+</div>

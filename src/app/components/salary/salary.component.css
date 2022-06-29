@@ -1,0 +1,65 @@
+.column-align-end {
+  text-align: end;
+}
+.column-align-end .mat-raised-button {
+  margin: 0 0 0 10px;
+}
+.table-fix-overflow {
+  overflow-x: auto;
+  float: left;
+  width: 100%;
+  position: relative;
+}
+.table-fix-overflow > table {
+  min-width: 1800px;
+}
+
+.mat-column-firstName {
+  left: 0px;
+  width: 100px;
+}
+
+.mat-column-lastName {
+  left: 100px;
+  width: 100px;
+}
+
+.edit-button,
+.approve-button {
+  background-color: #03a9f4;
+  color: #fff;
+}
+
+th {
+  background-color: #e9e9e9;
+}
+
+th.column-align-end,
+td.column-align-end {
+  text-align: center;
+  padding-right: 0 !important;
+}
+
+th.column-align-end {
+  width: 8%;
+}
+
+td > button {
+  min-width: 32px;
+  padding: 0 6px;
+}
+
+a:active {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.view-comments {
+  cursor: pointer;
+}
+
+.view-comments:hover {
+  color: blue;
+  text-decoration: underline;
+}

@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="column column-12">
+    <form class="editSalary" [formGroup]="editSalaryForm" (ngSubmit)="updateSalary()">
+      <mat-form-field appearance="fill">
+        <mat-label>Contract Expiry</mat-label>
+        <input formControlName="contractExpiry" name="contractExpiry" matInput [matDatepicker]="contractExpiryPicker" />
+        <mat-datepicker-toggle matSuffix [for]="contractExpiryPicker"></mat-datepicker-toggle>
+        <mat-datepicker #contractExpiryPicker></mat-datepicker>
+        <mat-error *ngIf="editSalaryForm.get('contractExpiry').hasError('matDatepickerParse')">
+          Please check date. No validate date format
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Last Contract Length</mat-label>
+        <input matInput formControlName="lastContractLength" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Suggested New Contract Length</mat-label>
+        <input matInput formControlName="suggestedNewContractLength" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Salary</mat-label>
+        <input matInput formControlName="salary" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Suggested Raise</mat-label>
+        <input matInput formControlName="suggestedRaise" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Amt in $</mat-label>
+        <input matInput formControlName="amtInDollar" />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="mat-form-field-w100">
+        <mat-label>Comments</mat-label>
+        <textarea matInput formControlName="comments"></textarea>
+      </mat-form-field>
+      <div class="action-buttons">
+        <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+        <button class="update-button" mat-raised-button type="submit" [disabled]="!editSalaryForm.valid">Update</button>
+      </div>
+    </form>
+  </div>
+</div>

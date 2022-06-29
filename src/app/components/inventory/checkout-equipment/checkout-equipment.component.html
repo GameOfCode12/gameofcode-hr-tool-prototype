@@ -1,0 +1,44 @@
+<form class="checkoutEquipmentForm" [formGroup]="checkoutEquipmentForm" (ngSubmit)="checkoutEquipment()">
+  <h3>Checkout Equipment</h3>
+  <mat-form-field appearance="fill">
+    <mat-label>Employee</mat-label>
+    <mat-select formControlName="employee">
+      <mat-option *ngFor="let employee of employees" value="{{ employee.id }}">
+        {{ employee.firstName + ' ' + employee.lastName }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="checkoutEquipmentForm.get('employee').hasError('required')">
+      Required: Please choose employee
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Checkout Date</mat-label>
+    <input formControlName="checkoutDate" name="checkoutDate" matInput [matDatepicker]="checkoutDatePicker" required />
+    <mat-datepicker-toggle matSuffix [for]="checkoutDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #checkoutDatePicker></mat-datepicker>
+    <mat-error *ngIf="checkoutEquipmentForm.get('checkoutDate').hasError('required')">
+      Required: Please enter equipment checkout Date
+    </mat-error>
+    <mat-error *ngIf="checkoutEquipmentForm.get('checkoutDate').hasError('matDatepickerParse')">
+      Please check date. Invalid value for date.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Expected Checkin Date</mat-label>
+    <input
+      formControlName="expectedCheckinDate"
+      name="expectedCheckinDate"
+      matInput
+      [matDatepicker]="expectedCheckinDatePicker"
+    />
+    <mat-datepicker-toggle matSuffix [for]="expectedCheckinDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #expectedCheckinDatePicker></mat-datepicker>
+    <mat-error *ngIf="checkoutEquipmentForm.get('expectedCheckinDate').hasError('matDatepickerParse')">
+      Please check date. Invalid value for date.
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="warn" type="button" (click)="closeCheckoutEquipmentDialog()">Close</button>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!checkoutEquipmentForm.valid">
+    Checkout Equipment
+  </button>
+</form>

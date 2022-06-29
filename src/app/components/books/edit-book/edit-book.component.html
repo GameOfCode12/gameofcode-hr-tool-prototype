@@ -1,0 +1,53 @@
+<app-breadcumb-toolbar *ngIf="editBookForm.value.title" breadcumbPath="Books/{{editBookForm.value.title}}"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <button mat-raised-button color="primary" [routerLink]="['/books']">Back</button>
+    </div>
+  </div>
+  <div class="column column-12">
+    <form class="addBookForm" [formGroup]="editBookForm" (ngSubmit)="updateBook()">
+      <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+          <input matInput formControlName="title" required>
+        <mat-error *ngIf="editBookForm.get('title').hasError('required')"></mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Author</mat-label>
+          <input matInput formControlName="author" required>
+        <mat-error *ngIf="editBookForm.get('author').hasError('required')"></mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Publisher</mat-label>
+          <input matInput formControlName="publisher" required>
+        <mat-error *ngIf="editBookForm.get('publisher').hasError('required')"></mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Place of Publication</mat-label>
+          <input matInput formControlName="placeOfPublication" required>
+        <mat-error *ngIf="editBookForm.get('placeOfPublication').hasError('required')"></mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Copyright Date</mat-label>
+        <input formControlName="copyrightDate" name="copyrightDate" matInput [matDatepicker]="copyrightDatePicker" required/>
+        <mat-datepicker-toggle matSuffix [for]="copyrightDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #copyrightDatePicker></mat-datepicker>
+        <mat-error *ngIf="editBookForm.get('copyrightDate').hasError('required')"></mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Number of Copies</mat-label>
+          <input matInput formControlName="numberOfCopies" required>
+        <mat-error *ngIf="editBookForm.get('numberOfCopies').hasError('required')"></mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Available</mat-label>
+          <mat-select formControlName="available" required>
+            <mat-option value="true">Yes</mat-option>
+            <mat-option value="false">No</mat-option>
+          </mat-select>
+        <mat-error *ngIf="editBookForm.get('available').hasError('required')"></mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!editBookForm.valid">Update Book</button>
+    </form>
+  </div>
+</div>

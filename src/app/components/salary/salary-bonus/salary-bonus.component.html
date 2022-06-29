@@ -1,0 +1,80 @@
+<app-breadcumb-toolbar breadcumbPath="Bonus"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <button class="add-edit-button" mat-raised-button (click)="addSalaryBonus()">Add Salary Bonus</button>
+    </div>
+  </div>
+  <div class="column column-12">
+    <table mat-table [dataSource]="salaryBonusDataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef>First Name</th>
+        <td mat-cell *matCellDef="let salaryBonus">
+          {{ salaryBonus.employee !== null ? salaryBonus.employee.firstName : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef>Last Name</th>
+        <td mat-cell *matCellDef="let salaryBonus">
+          {{ salaryBonus.employee !== null ? salaryBonus.employee.lastName : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Role</th>
+        <td mat-cell *matCellDef="let salaryBonus">
+          {{ salaryBonus.employee !== null ? salaryBonus.employee.title : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="joinedDate">
+        <th mat-header-cell *matHeaderCellDef>Joined Date</th>
+        <td mat-cell *matCellDef="let salaryBonus">
+          {{ salaryBonus.employee !== null ? salaryBonus.employee.joinedDate : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="yearsInCa">
+        <th mat-header-cell *matHeaderCellDef>Years in CA</th>
+        <td mat-cell *matCellDef="let salaryBonus">
+          {{ salaryBonus.employee !== null ? salaryBonus.employee.yearsInCA : '---' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="salary">
+        <th mat-header-cell *matHeaderCellDef>Salary</th>
+        <td mat-cell *matCellDef="let salaryBonus">
+          {{ salaryBonus.salary !== null ? salaryBonus.salary.salary : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="bonusType">
+        <th mat-header-cell *matHeaderCellDef>Bonus</th>
+        <td mat-cell *matCellDef="let salaryBonus">
+          {{ salaryBonus.bonusType ? salaryBonus.bonusType : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="netBonus">
+        <th mat-header-cell *matHeaderCellDef>Net Bonus</th>
+        <td mat-cell *matCellDef="let salaryBonus">
+          {{ salaryBonus.netBonus ? salaryBonus.netBonus : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="amtInDollar">
+        <th mat-header-cell *matHeaderCellDef>Amt in $</th>
+        <td mat-cell *matCellDef="let salaryBonus">
+          {{ salaryBonus.amtInDollar ? salaryBonus.amtInDollar : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="column-align-end">Action</th>
+        <td mat-cell *matCellDef="let salaryBonus" class="column-align-end">
+          <button class="add-edit-button" mat-raised-button (click)="editSalaryBonus(salaryBonus)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button class="delete-button" mat-raised-button color="warn" (click)="deleteSalaryBonus(salaryBonus)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="salaryBonusColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: salaryBonusColumns"></tr>
+    </table>
+  </div>
+</div>

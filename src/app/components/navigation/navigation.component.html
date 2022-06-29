@@ -1,0 +1,185 @@
+<mat-toolbar class="navigationToolbar" color="primary">
+  <span class="navbar-brand">HR Tool Prototype</span>
+  <nav class="navigation">
+    <ul>
+      <li>
+        <h5>Cape Ann Team</h5>
+        <ul class="navigation-sub-menu">
+          <div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.Employees]" [routerLinkActive]="'active'"
+                ><div class="heading">Employees</div></a
+              >
+            </li>
+          </div>
+          <div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.PastEmployees]" [routerLinkActive]="'active'"
+                ><div class="heading">Past Employees</div></a
+              >
+            </li>
+          </div>
+          <div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.Conferences]" [routerLinkActive]="'active'"
+                ><div class="heading">Conferences/Trainings</div></a
+              >
+            </li>
+          </div>
+          <div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.EmergencyContacts]" [routerLinkActive]="'active'"
+                ><div class="heading">Emergency Contacts</div></a
+              >
+            </li>
+          </div>
+          <div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.Projects]" [routerLinkActive]="'active'"
+                ><div class="heading">
+                  <a [routerLink]="['/', routePaths.TeamAllocation]" [routerLinkActive]="'active'">Projects</a>
+                </div></a
+              >
+            </li>
+          </div>
+        </ul>
+      </li>
+      <li>
+        <h5>Vacation</h5>
+        <ul class="navigation-sub-menu">
+          <div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.VacationForm]" [routerLinkActive]="'active'"
+                ><div class="heading">Vacation Form</div></a
+              >
+            </li>
+          </div> 
+          <div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.MyVacationDays]" [routerLinkActive]="'active'"
+                ><div class="heading">Vacation Days</div></a
+              >
+            </li>
+          </div>
+          
+        </ul>
+      </li>
+      <li>
+        <h5>Calendar</h5>
+        <ul class="navigation-sub-menu">
+          <!-- <div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.VacationRequests]" [routerLinkActive]="'active'"
+                ><div class="heading">Vacation requests</div></a
+              >
+            </li>
+          </div> -->
+          <!--<div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.VacationDays]" [routerLinkActive]="'active'"
+                ><div class="heading">Vacation days</div></a
+              >
+            </li>
+          </div>-->
+          <div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.NonWorkingHolidays]" [routerLinkActive]="'active'"
+                ><div class="heading">Non Working holidays</div></a
+              >
+            </li>
+          </div>
+          <div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.VacationCalendar]" [routerLinkActive]="'active'"
+                ><div class="heading">Vacation Calendar</div></a
+              >
+            </li>
+          </div>
+        </ul>
+      </li>
+      <li>
+        <h5>Salaries</h5>
+        <ul class="navigation-sub-menu">
+          <div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.Salaries]" [routerLinkActive]="'active'"
+                ><div class="heading">Salaries Sheet</div></a
+              >
+            </li>
+          </div>
+          <div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.SalaryBonuses]" [routerLinkActive]="'active'"
+                ><div class="heading">Bonus Sheets</div></a
+              >
+            </li>
+          </div>
+          <!--<div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.SalarySlips]" [routerLinkActive]="'active'"
+                ><div class="heading">Salary Slips</div></a
+              >
+            </li>
+          </div>-->
+          <div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.ReferralBonus]" [routerLinkActive]="'active'"
+                ><div class="heading">Referral Bonus</div></a
+              >
+            </li>
+          </div>
+        </ul>
+      </li>
+      <!--<li>
+        <h5>Inventory</h5>
+        <ul class="navigation-sub-menu">
+          <div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.EquipmentRequest]" [routerLinkActive]="'active'"
+                ><div class="heading">Equipment request</div></a
+              >
+            </li>
+          </div>
+          <div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.EquipmentCheckoutRequest]" [routerLinkActive]="'active'"
+                ><div class="heading">Equipment checkout request</div></a
+              >
+            </li>
+          </div>
+        </ul>
+      </li>-->
+      <li>
+        <h5>Library</h5>
+        <ul class="navigation-sub-menu">
+          <div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.Books]" [routerLinkActive]="'active'"
+                ><div class="heading">Book</div></a
+              >
+            </li>
+          </div>
+          <!--<div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.BookCheckouts]" [routerLinkActive]="'active'"
+                ><div class="heading">Book Checkout</div></a
+              >
+            </li>
+          </div>-->
+        </ul>
+      </li>
+      <li>
+        <h5>Employees Skills</h5>
+        <ul class="navigation-sub-menu">
+          <div class="link">
+            <li>
+              <a [routerLink]="['/', routePaths.EmployeesSkills]" [routerLinkActive]="'active'"
+                ><div class="heading">Employees List</div></a
+              >
+            </li>
+          </div>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</mat-toolbar>

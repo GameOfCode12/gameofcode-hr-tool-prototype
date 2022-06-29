@@ -1,0 +1,53 @@
+<app-breadcumb-toolbar breadcumbPath="Referrals/Add Referral"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <form class="addReferralForm" [formGroup]="addReferralForm" (ngSubmit)="addReferral()">
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" required>
+        <mat-error *ngIf="addReferralForm.get('firstName').hasError('required')"></mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" required>
+        <mat-error *ngIf="addReferralForm.get('lastName').hasError('required')"></mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Employee Referral</mat-label>
+        <mat-select formControlName="employeeReferral">
+          <mat-option *ngFor="let employee of employees" value="{{ employee.id }}">
+            {{ employee.firstName}} {{ employee.lastName }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="addReferralForm.get('employeeReferral').hasError('required')">
+          Required: Choose employee referral
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Trial Ends</mat-label>
+        <input formControlName="trialEnds" name="trialEnds" matInput [matDatepicker]="trialEndsPicker" required/>
+        <mat-datepicker-toggle matSuffix [for]="trialEndsPicker"></mat-datepicker-toggle>
+        <mat-datepicker #trialEndsPicker></mat-datepicker>
+        <mat-error *ngIf="addReferralForm.get('trialEnds').hasError('required')">
+          Required: Choose trial ends date
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Bonus Paid</mat-label>
+          <mat-select formControlName="bonusPaid">
+            <mat-option value="true">Yes</mat-option>
+            <mat-option value="false">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Referral Bonus (KM)</mat-label>
+            <input matInput formControlName="referralBonus">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="mat-form-field-w100">
+        <mat-label>Note</mat-label>
+            <textarea matInput formControlName="note"></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!addReferralForm.valid">Add Referral</button>
+    </form>
+  </div>
+</div>

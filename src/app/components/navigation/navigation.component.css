@@ -1,0 +1,84 @@
+.navigationToolbar {
+  flex-direction: column;
+  min-height: 100vh;
+}
+.navigationToolbar.mat-toolbar.mat-primary {
+  background: #0a3164;
+  color: #fff;
+  padding: 0;
+}
+.navigationToolbar .navbar-brand {
+  margin: 0;
+  padding: 20px 0;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+.navigationToolbar .navigation {
+  padding: 30px 0;
+  width: 100%;
+  float: left;
+  background: #0a3164;
+}
+.navigationToolbar .navigation > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.navigationToolbar .navigation > ul > li {
+  width: 100%;
+  padding: 0 30px 10px;
+}
+.navigationToolbar .navigation > ul > li > a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+.navigationToolbar .navigation .navigation-sub-menu {
+  list-style: none;
+  margin: 0;
+}
+.navigationToolbar .navigation h5 {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+.navigationToolbar .navigation .navigation-sub-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  cursor: pointer;
+}
+.active {
+  background-color: #03a9f4;
+  display: flex;
+  padding: 0;
+  width: 300px;
+}
+.link {
+  position: relative;
+  margin-left: -70px;
+}
+.heading {
+  position: relative;
+  right: -45px;
+  width: 230px;
+}
+.link-project {
+  position: relative;
+  margin-left: -85px;
+}
+.heading-project {
+  position: relative;
+  right: -45px;
+  width: 230px;
+  font-size: 13.28px;
+}
+.active-project {
+  background-color: #03a9f4;
+  display: flex;
+  padding: 0;
+  width: 315px;
+}

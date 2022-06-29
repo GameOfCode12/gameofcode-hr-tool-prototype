@@ -1,0 +1,197 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background: #f6f6f6;
+  color: #555;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+table {
+  width: 100%;
+}
+.mat-table {
+  border: 1px solid #ddd;
+}
+table thead tr.mat-header-row {
+  background: #fafafa;
+}
+table thead tr.mat-header-row th.mat-header-cell {
+  border-bottom-width: 2px;
+  color: #000;
+}
+table tr:nth-child(even) {
+  background: #f6f6f6;
+}
+table tr:nth-child(odd) .column-align-end {
+  background: #ddd;
+}
+table tr:nth-child(even) .column-align-end {
+  background: #ccc;
+}
+
+/* SNACKBARS */
+.error_snackbar {
+  background-color: rgb(255, 77, 77);
+}
+
+.success_snackbar {
+  background-color: rgb(24, 167, 31);
+}
+
+.error_snackbar *,
+.success_snackbar * {
+  color: white !important;
+}
+
+/* LAYOUT */
+app-dashboard {
+  display: flex;
+}
+.app-dashboard-container {
+  width: 100%;
+}
+.app-navigation {
+  width: 300px;
+  float: left;
+  background: #0a3164;
+}
+.contentWrap {
+  width: 100%;
+  float: right;
+  min-height: 100vh;
+}
+.container {
+  display: block;
+  width: 100%;
+  padding: 0 15px;
+}
+.column {
+  float: left;
+  padding: 0 15px;
+}
+.column-3 {
+  width: 25%;
+}
+.column-4 {
+  width: 33.333333%;
+}
+.column-6 {
+  width: 50%;
+}
+.column-12 {
+  width: 100%;
+}
+/* Action Toolbar */
+.actionToolbar {
+  float: left;
+  width: 100%;
+  margin: 0 0 30px;
+  flex-direction: row;
+  align-items: center;
+  z-index: 3 !important;
+}
+.actionToolbar > button {
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+}
+.filter-form-field {
+  float: right;
+}
+.filter-form-field > input {
+  float: left;
+  width: 100%;
+  width: 460px;
+  padding: 6px 10px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  outline: 0;
+}
+.filter-form-field > input:focus {
+  border-color: #2ea3f2;
+}
+/* Breadcumbs */
+.breadcumb {
+  float: left;
+  width: 100%;
+  border-bottom: 1px solid #e0e0e0;
+  margin: 0 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 25px;
+  background: #fff;
+  min-height: 73px;
+}
+.breadcumb .breadcumb-list {
+  float: left;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 63px;
+}
+.breadcumb .breadcumb-list > li {
+  float: left;
+  list-style: none;
+  font-size: 15px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #000;
+}
+.breadcumb .breadcumb-list > li:last-child {
+  color: #2ea3f2;
+}
+.breadcumb .breadcumb-list > li:before {
+  content: '/';
+  position: relative;
+  margin: 0 5px;
+  color: #000;
+}
+.breadcumb .breadcumb-list > li:first-child:before {
+  display: none;
+}
+.breadcumb .breadcumb-list > li > button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  text-transform: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+  font-family: inherit;
+}
+.breadcumb .breadcumb-actions {
+  float: right;
+}
+.breadcumb .breadcumb-actions > button {
+  margin: 0 0 0 10px;
+}
+.mat-button.sidenav-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  height: 73px;
+  border-right: 1px solid #ddd;
+  border-radius: 0;
+}

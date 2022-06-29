@@ -1,0 +1,89 @@
+<app-breadcumb-toolbar breadcumbPath="Equipments/Edit Equipment"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <button mat-raised-button (click)="goBack()" color="primary">&laquo; Back</button>
+    </div>
+  </div>
+  <div class="column column-12">
+    <form class="addEquipmentModelForm" [formGroup]="editEquipmentForm" (ngSubmit)="updateEquipment()">
+      <mat-form-field appearance="fill">
+        <mat-label>Company</mat-label>
+        <mat-select formControlName="company">
+          <mat-option *ngFor="let company of companies" value="{{ company }}">{{ company }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Asset Tag</mat-label>
+        <input matInput formControlName="assetTag" required />
+        <mat-error *ngIf="editEquipmentForm.get('assetTag').hasError('required')">
+          Required: Please enter asset tag for equipment
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Model</mat-label>
+        <mat-select formControlName="model">
+          <mat-option *ngFor="let model of equipmentModels" value="{{ model.id }}">{{ model.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option *ngFor="let status of equipmentStatus" value="{{ status }}">{{ status }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Serial</mat-label>
+        <input matInput formControlName="serial" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Asset Name</mat-label>
+        <input matInput formControlName="assetName" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Purchase Date</mat-label>
+        <input formControlName="purchaseDate" name="purchaseDate" matInput [matDatepicker]="purchaseDatePicker" />
+        <mat-datepicker-toggle matSuffix [for]="purchaseDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #purchaseDatePicker></mat-datepicker>
+        <mat-error *ngIf="editEquipmentForm.get('purchaseDate').hasError('matDatepickerParse')">
+          Please check date. No validate date format
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Supplier</mat-label>
+        <mat-select formControlName="supplier">
+          <mat-option *ngFor="let supplier of equipmentSuppliers" value="{{ supplier.id }}">
+            {{ supplier.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Order Number</mat-label>
+        <input matInput formControlName="orderNumber" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Purchase Cost</mat-label>
+        <span matPrefix>USD &nbsp;</span>
+        <input matInput formControlName="purchaseCost" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Warranty</mat-label>
+        <input matInput formControlName="warranty" />
+        <span matSuffix>Months</span>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Location</mat-label>
+        <mat-select formControlName="location">
+          <mat-option *ngFor="let location of equipmentLocations" value="{{ location.id }}">
+            {{ location.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="mat-form-field-w100">
+        <mat-label>Notes</mat-label>
+        <textarea matInput formControlName="notes"></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!editEquipmentForm.valid">Save</button>
+    </form>
+  </div>
+</div>

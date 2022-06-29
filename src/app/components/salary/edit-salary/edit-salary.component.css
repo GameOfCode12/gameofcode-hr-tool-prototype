@@ -1,0 +1,22 @@
+.editSalaryForm {
+  width: 100%;
+  margin: 0 0 30px;
+  padding: 0 10px;
+}
+.mat-form-field {
+  width: 50%;
+  padding: 0 10px;
+}
+.mat-form-field-w100 {
+  width: 100%;
+}
+
+.update-button {
+  background-color: #03a9f4;
+  color: #fff;
+  margin-left: 15px;
+}
+
+.action-buttons {
+  float: right;
+}

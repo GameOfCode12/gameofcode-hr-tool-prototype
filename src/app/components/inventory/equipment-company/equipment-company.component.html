@@ -1,0 +1,33 @@
+<app-breadcumb-toolbar breadcumbPath="Equipment Companies"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <button mat-raised-button color="primary" [routerLink]="['/equipment-companies/add']">
+        Add Equipment Company
+      </button>
+    </div>
+  </div>
+  <div class="column column-12">
+    <table mat-table [dataSource]="equipmentCompanyDataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let equipmentCompany">
+          {{ equipmentCompany.name ? equipmentCompany.name : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="column-align-end">Actions</th>
+        <td mat-cell *matCellDef="let equipmentCompany" class="column-align-end">
+          <button mat-raised-button routerLink="/equipment-companies/edit/{{ equipmentCompany.id }}" color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-raised-button color="warn" (click)="deleteEquipmentCompany(equipmentCompany)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="equipmentCompanyTableColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: equipmentCompanyTableColumns"></tr>
+    </table>
+  </div>
+</div>

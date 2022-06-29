@@ -1,0 +1,211 @@
+<nav class="breadcumb">
+  <div>
+    <ol class="breadcumb-list">
+      <li class="breadcrumb-item">
+        <span>Add Employee</span>
+      </li>
+    </ol>
+  </div>
+  <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+</nav>
+
+<div class="container">
+  <div class="column column-12">
+    <form class="addEmployerForm" [formGroup]="addEmployeeForm" (ngSubmit)="addEmployer()">
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" required />
+        <mat-error *ngIf="addEmployeeForm.get('firstName').hasError('required')">
+          Required: Please enter employee first name
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" required />
+        <mat-error *ngIf="addEmployeeForm.get('lastName').hasError('required')">
+          Required: Please enter employee last name
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Role</mat-label>
+        <input matInput formControlName="title" required />
+        <mat-error *ngIf="addEmployeeForm.get('title').hasError('required')">
+          Required: Please enter employee job role
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Manager</mat-label>
+        <mat-select formControlName="manager" required>
+          <mat-option *ngFor="let manager of managers" [value]="manager"
+            >{{ manager.firstName }} {{ manager.lastName }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="phoneNumber" required />
+        <mat-error *ngIf="addEmployeeForm.get('phoneNumber').hasError('required')">
+          Required: Please enter employee phone number
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Birthday</mat-label>
+        <input formControlName="birthday" name="birthday" matInput [matDatepicker]="birthdayDatePicker" required />
+        <mat-datepicker-toggle matSuffix [for]="birthdayDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #birthdayDatePicker></mat-datepicker>
+        <mat-error *ngIf="addEmployeeForm.get('birthday').hasError('matDatepickerParse')">
+          Please check date. Invalid value for date.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Joined Date</mat-label>
+        <input formControlName="joinedDate" name="joinedDate" matInput [matDatepicker]="joinedDatePicker" required />
+        <mat-datepicker-toggle matSuffix [for]="joinedDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #joinedDatePicker></mat-datepicker>
+        <mat-error *ngIf="addEmployeeForm.get('joinedDate').hasError('required')">
+          Required: Please enter employee joined Date
+        </mat-error>
+        <mat-error *ngIf="addEmployeeForm.get('joinedDate').hasError('matDatepickerParse')">
+          Please check date. Invalid value for date.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Salary</mat-label>
+        <input matInput formControlName="salary" required />
+        <mat-error *ngIf="addEmployeeForm.get('salary').hasError('required')">
+          Required: Please enter employee salary
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required />
+        <mat-error *ngIf="addEmployeeForm.get('email').hasError('required')">
+          Required: Please enter employee email
+        </mat-error>
+        <mat-error *ngIf="addEmployeeForm.get('email').hasError('email')"> Please enter valid email </mat-error>
+        <mat-error *ngIf="addEmployeeForm.get('email').hasError('pattern')">
+          Please enter @capeannenterprises.com email
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Last Bonus Received</mat-label>
+        <mat-select formControlName="lastBonusReceived" required>
+          <mat-option *ngFor="let bonus of bonusTypes" [value]="bonus">{{ bonus }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="addEmployeeForm.get('lastBonusReceived').hasError('lastBonusReceived')">
+          Please check bonus. Invalid value for bonus.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>General Rank</mat-label>
+        <input matInput formControlName="generalRank" required />
+        <mat-error *ngIf="addEmployeeForm.get('generalRank').hasError('required')">
+          Required: Please enter user's general rank.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Domain</mat-label>
+        <input matInput formControlName="domain" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Projects</mat-label>
+        <mat-select [formControl]="projectsForm" multiple>
+          <input matInput formControlName="projects" />
+          <mat-option
+            (onSelectionChange)="getSelectedProjects($event)"
+            *ngFor="let project of projects"
+            [value]="project"
+            >{{ project.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+
+      <div class="formgroupfields" formGroupName="user">
+        <h3>User Data</h3>
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" required />
+          <mat-error *ngIf="addEmployeeForm.get('user').get('username').hasError('required')">
+            Required: Please enter employee username
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required />
+          <mat-error *ngIf="addEmployeeForm.get('user').get('email').hasError('required')">
+            Required: Please enter employee email
+          </mat-error>
+          <mat-error *ngIf="addEmployeeForm.get('user').get('email').hasError('email')">
+            Please enter valid email
+          </mat-error>
+          <mat-error *ngIf="addEmployeeForm.get('user').get('email').hasError('pattern')">
+            Please enter @capeannenterprises.com email
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" required />
+          <mat-error *ngIf="addEmployeeForm.get('user').get('password').hasError('required')">
+            Required: Please enter employee user password
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Role</mat-label>
+          <mat-select formControlName="role" required>
+            <mat-option *ngFor="let role of roles" value="{{ role.id }}">{{ role.name }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="addEmployeeForm.get('user').get('role').hasError('required')">
+            Required: Please choose employee user role
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="formgroupfields" formGroupName="emergencyContact">
+        <h3>Emergency Contact</h3>
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" required />
+          <mat-error *ngIf="addEmployeeForm.get('emergencyContact').get('firstName').hasError('required')">
+            Required: Please enter emergency contact first name
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" required />
+          <mat-error *ngIf="addEmployeeForm.get('emergencyContact').get('lastName').hasError('required')">
+            Required: Please enter emergency contact last name
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="phoneNumber" required />
+          <mat-error *ngIf="addEmployeeForm.get('emergencyContact').get('phoneNumber').hasError('required')">
+            Required: Please enter emergency contact phone number
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Relationship</mat-label>
+          <input matInput formControlName="relationship" required />
+          <mat-error *ngIf="addEmployeeForm.get('emergencyContact').get('relationship').hasError('required')">
+            Required: Please enter emergency contact relationship
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="action-buttons">
+        <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+        <button class="add-button" mat-raised-button type="submit" [disabled]="!addEmployeeForm.valid">Add</button>
+      </div>
+    </form>
+  </div>
+</div>

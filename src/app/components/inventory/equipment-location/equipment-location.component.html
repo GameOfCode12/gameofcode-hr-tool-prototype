@@ -1,0 +1,57 @@
+<app-breadcumb-toolbar breadcumbPath="Equipment Locations"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <button mat-raised-button color="primary" [routerLink]="['/equipment-locations/add']">
+        Add Equipment Location
+      </button>
+    </div>
+  </div>
+  <div class="column column-12">
+    <table mat-table [dataSource]="equipmentLocationDataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let equipmentLocation">
+          {{ equipmentLocation.name !== null ? equipmentLocation.name : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef>Address</th>
+        <td mat-cell *matCellDef="let equipmentLocation">
+          {{ equipmentLocation.address !== null ? equipmentLocation.address : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef>City</th>
+        <td mat-cell *matCellDef="let equipmentLocation">
+          {{ equipmentLocation.city !== null ? equipmentLocation.city : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="postalCode">
+        <th mat-header-cell *matHeaderCellDef>Postal Code</th>
+        <td mat-cell *matCellDef="let equipmentLocation">
+          {{ equipmentLocation.postalCode !== null ? equipmentLocation.postalCode : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef>Country</th>
+        <td mat-cell *matCellDef="let equipmentLocation">
+          {{ equipmentLocation.country !== null ? equipmentLocation.country : '---' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="column-align-end">Actions</th>
+        <td mat-cell *matCellDef="let equipmentLocation" class="column-align-end">
+          <button mat-raised-button routerLink="/equipment-locations/edit/{{ equipmentLocation.id }}" color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-raised-button color="warn" (click)="deleteEquipmentLocation(equipmentLocation)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="equipmentLocationTableColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: equipmentLocationTableColumns"></tr>
+    </table>
+  </div>
+</div>

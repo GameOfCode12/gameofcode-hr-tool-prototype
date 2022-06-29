@@ -1,0 +1,31 @@
+@media print {
+  .mat-raised-button {
+    display: none !important;
+  }
+
+  table {
+    box-shadow: none;
+  }
+}
+
+.column-align-end .mat-raised-button {
+  margin: 0 0 0 10px;
+}
+
+.column-align-end {
+  text-align: center;
+  width: 186px;
+  padding: 0 !important;
+}
+
+.add-edit-button {
+  background-color: #03a9f4;
+  color: #fff;
+  min-width: 32px;
+  padding: 0 6px;
+}
+
+.delete-button {
+  min-width: 32px;
+  padding: 0 6px;
+}

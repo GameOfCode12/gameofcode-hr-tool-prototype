@@ -1,0 +1,21 @@
+<app-breadcumb-toolbar breadcumbPath="Settings"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <form class="editPasswordForm" [formGroup]="editPasswordForm" (ngSubmit)="updatePassword()">
+      <h3>Change Password</h3>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" required />
+        <mat-error *ngIf="editPasswordForm.get('password').hasError('required')"></mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Re-Type Password</mat-label>
+        <input matInput formControlName="rePassword" required />
+        <mat-error *ngIf="editPasswordForm.get('rePassword').hasError('required')"></mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!editPasswordForm.valid">
+        Update Password
+      </button>
+    </form>
+  </div>
+</div>

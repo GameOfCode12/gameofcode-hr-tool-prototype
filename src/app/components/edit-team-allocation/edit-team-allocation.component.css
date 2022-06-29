@@ -1,0 +1,56 @@
+::ng-deep .mat-dialog-content {
+  height: 710px !important;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-raised-button {
+  margin: 0 10px 0 0;
+}
+
+.mat-card {
+  position: relative;
+  top: 60px;
+}
+
+.button {
+  bottom: -200px !important;
+  left: -760px;
+}
+
+.list li {
+  padding-bottom: 20px !important;
+}
+
+.delete-button {
+  float: right;
+  right: -443px;
+}
+
+.mat-card-parent {
+  position: relative;
+}
+
+.mat-icon {
+  position: relative;
+  bottom: 5px;
+}
+
+.action-button {
+  position: relative;
+  bottom: -80px;
+  left: 239px;
+}
+
+.members {
+  float: right;
+  width: 50%;
+  margin-top: -60px;
+}
+
+.edit-project-form {
+  width: 40%;
+  float: left;
+}

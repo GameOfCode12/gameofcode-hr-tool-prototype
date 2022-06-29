@@ -1,0 +1,48 @@
+<app-breadcumb-toolbar breadcumbPath="Books/Books Checkout"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <button mat-raised-button color="primary" [routerLink]="['/books/add-checkout-book']">Checkout Book</button>
+    </div>
+  </div>
+  <div class="column column-12">
+    <table mat-table [dataSource]="bookCheckouts" class="mat-elevation-z8">
+      <ng-container matColumnDef="employeeName">
+        <th mat-header-cell *matHeaderCellDef>Employee Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.employeeFirstName + ' ' + element.employeeLastName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="bookTitle">
+        <th mat-header-cell *matHeaderCellDef>Book Title</th>
+        <td mat-cell *matCellDef="let element">{{ element.bookTitle }}</td>
+      </ng-container>
+      <ng-container matColumnDef="bookAuthor">
+        <th mat-header-cell *matHeaderCellDef>Book Author</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.bookAuthor }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="dateBorrowed">
+        <th mat-header-cell *matHeaderCellDef>Date Borrowed</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.dateBorrowed }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="dateReturned">
+        <th mat-header-cell *matHeaderCellDef>Date Returned</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.dateReturned }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="column-align-end"> Action </th>
+        <td mat-cell *matCellDef="let element" class="column-align-end">
+          <button mat-raised-button color="primary" routerLink="/books/book-checkout/{{element.id}}"><mat-icon>edit</mat-icon></button>
+          <button mat-raised-button color="warn" (click)="deleteBookCheckout(element)"><mat-icon>delete</mat-icon></button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns"></tr>
+    </table>
+  </div>
+</div>
+

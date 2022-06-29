@@ -1,0 +1,14 @@
+.mat-form-field {
+  width: 50%;
+  padding: 0 10px;
+}
+
+.add-button {
+  margin-left: 15px;
+  background-color: #03a9f4;
+  color: #fff;
+}
+
+.action-buttons {
+  float: right;
+}

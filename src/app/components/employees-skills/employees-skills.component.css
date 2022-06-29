@@ -1,0 +1,176 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+* {
+  box-sizing: border-box;
+}
+
+.avatar {
+  color: #03a9f4;
+  height: 85px;
+  width: 85px;
+}
+
+.skill-level-star {
+  color: #03a9f4;
+  display: inline-flex;
+  vertical-align: middle;
+  height: 20px;
+  width: 20px;
+  margin-top: -2px;
+}
+
+.example-section {
+  display: block !important;
+}
+
+.div-search-filter {
+  float: left;
+  width: 35%;
+}
+
+.search-filter-title {
+  float: left;
+  padding: 0 15px;
+}
+
+.search-filter-subtitle {
+  float: right;
+  padding: 0 10px;
+  margin-top: 7px !important;
+}
+
+.div-card,
+.div-sort {
+  float: left;
+  width: 65%;
+  z-index: 999 !important;
+}
+
+#employee-cards,
+#search-filter {
+  width: 100%;
+}
+
+.checkbox {
+  float: left;
+  width: 50%;
+  padding: 3px;
+}
+
+mat-card-title {
+  display: block;
+  margin-bottom: 3px;
+  z-index: 1 !important;
+}
+
+.card-buttons {
+  margin-bottom: 0px;
+}
+
+.projects-subtitle {
+  margin-left: 8px;
+}
+
+.tech-skills-subtitle {
+  margin-left: -32px;
+}
+
+.enter-skill-name {
+  margin: 3px 0 3px 0;
+  box-sizing: border-box;
+}
+.inputfield {
+  display: flex;
+  align-items: center;
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background,
+::ng-deep .mat-checkbox-indeterminate .mat-checkbox-background {
+  background-color: #03a9f4 !important;
+}
+
+.search-sort-input {
+  float: right;
+}
+
+.sort-by-input {
+  width: 260px;
+  height: 37px;
+  margin-top: -4px;
+}
+
+.page-title {
+  float: left;
+  padding: 0 0 0 16px;
+}
+
+::ng-deep .mat-card-subtitle {
+  display: block !important;
+}
+
+.card-subtitles {
+  margin: 0;
+  font-weight: bold;
+  font-size: 15px;
+  color: black;
+}
+
+.skill-level-stars {
+  width: 100%;
+}
+
+.icon-star {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 38px;
+  padding: 0 24px;
+}
+
+.blue-icon,
+.icon-star:hover {
+  color: #03a9f4;
+}
+
+.icon-star:first-child {
+  padding-left: 0 !important;
+}
+.search-filter-subtitle {
+  margin-right: 8px;
+}
+
+a:link {
+  color: blue;
+  cursor: pointer;
+}
+a:hover {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a:active {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.skill-span {
+  cursor: pointer;
+}
+
+.skill-span:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+.skill-span:hover > .stars-span {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.skillname-span {
+  margin: 0;
+  display: inline;
+  float: left;
+  margin-right: 5px;
+}

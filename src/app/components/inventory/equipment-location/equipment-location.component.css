@@ -1,0 +1,7 @@
+.column-align-end {
+  text-align: end;
+  width: 186px;
+}
+.column-align-end .mat-raised-button {
+  margin: 0 0 0 10px;
+}

@@ -1,0 +1,36 @@
+<form
+  class="setPastEmployeeForm"
+  [formGroup]="setPastEmployeeForm"
+  (ngSubmit)="setPastEmployee()"
+>
+  <mat-form-field appearance="fill">
+    <mat-label>Date Left</mat-label>
+    <input
+      formControlName="dateLeft"
+      name="dateLeft"
+      matInput
+      [matDatepicker]="dateLeftPicker"
+      required
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="dateLeftPicker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #dateLeftPicker></mat-datepicker>
+    <mat-error
+      *ngIf="setPastEmployeeForm.get('dateLeft').hasError('required')"
+    ></mat-error>
+  </mat-form-field>
+  <br />
+  <button mat-raised-button color="warn" (click)="closeSetPastEmployeeDialog()">
+    Cancel
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!setPastEmployeeForm.valid"
+  >
+    Confirm
+  </button>
+</form>
